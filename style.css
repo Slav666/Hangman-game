@@ -1,0 +1,28 @@
+body {
+    background-color: blue;
+    color: white;
+    font-size: 28px;
+}
+
+#container {
+    width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+#gallows{
+    width: 900px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    text-align: center;
+    font-size: 48px;
+}
+#alphabet {
+    float: left;
+    width: 450px;
+    text-align: center;
+}
+#gallows {
+    float: left;
+    width: 450px;
+    text-align: center;
+}
