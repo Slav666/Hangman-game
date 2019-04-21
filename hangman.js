@@ -61,21 +61,38 @@ function start(){
     writePasswordToGuess();
 }
 
-String.prototype.setCharacter = function (place, charakter) {
+String.prototype.setCharacter = function (place, character) {
     if (place > this.length - 1) {
-    return this.toString();
+        return this.toString();
     }
     else {
-        return this.substr(0, place) + charakter +this.substr(place + 1);
+        return this.substr(0, place) + character +this.substr(place + 1);
     }
 }
 
 function check(num) {
 
+    var goodGuess = false;
+
     for(i=0; i<passwordLength; i++) {
         if (passwordToGuess.charAt(i) == letters[num]) {
             password1 = password1.setCharacter(i, letters[num]);
+            goodGuess = true;
         }
     }
-    writePasswordToGuess();
+
+    if(goodGuess == true) {
+
+        var element = "letterToCheck" + num;
+        document.getElementById(element).style.background = "#003300";
+        document.getElementById(element).style.color = "#000C00";
+        document.getElementById(element).style.border = "3px solid #000C00";
+        document.getElementById(element).style.cursor = "default";
+
+        writePasswordToGuess();
+    }
+        else {
+
+        }
+    
 }
