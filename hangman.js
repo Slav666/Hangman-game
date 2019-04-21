@@ -2,7 +2,8 @@ var passwordToGuess = "Actions speak louder than words";
 passwordToGuess = passwordToGuess.toUpperCase();
 
 var numberOfWrongGeuss = 0;
-
+var yes = new Audio("yes.wav");
+var no = new Audio("no.wav");
 var passwordLength = passwordToGuess.length;
 var password1 = "";
 for (i = 0; i < passwordLength; i++) {
@@ -85,6 +86,7 @@ function check(num) {
 
     if(goodGuess == true) {
 
+        yes.play();
         var element = "letterToCheck" + num;
         document.getElementById(element).style.background = "#003300";
         document.getElementById(element).style.color = "#000C00";
@@ -94,6 +96,7 @@ function check(num) {
         writePasswordToGuess();
     }
         else {
+            no.play();
             var element = "letterToCheck" + num;
             document.getElementById(element).style.background = "#330000";
             document.getElementById(element).style.color = "#C00000";
