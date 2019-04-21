@@ -1,4 +1,4 @@
-var passwordToGuess = "Actions speak louder than words.";
+var passwordToGuess = "Actions speak louder than words";
 passwordToGuess = passwordToGuess.toUpperCase();
 
 var passwordLength = passwordToGuess.length;
@@ -52,10 +52,30 @@ function start(){
     var div_content = " ";
 
     for (i = 0; i < 26; i++){
-        div_content = div_content + '<div class="letter">'+letters[i]+'</div>';
+        var element = "letterToCheck" + i;
+        div_content = div_content + '<div class="letter" onclick="check('+i+')" id = "'+element+'">'+letters[i]+'</div>';
         if((i+ 1) % 7 == 0) div_content = div_content + '<div style="clear:both;"></div>';
     }
     document.getElementById("alphabet").innerHTML = div_content;
 
+    writePasswordToGuess();
+}
+
+String.prototype.setCharacter = function (place, charakter) {
+    if (place > this.length - 1) {
+    return this.toString();
+    }
+    else {
+        return this.substr(0, place) + charakter +this.substr(place + 1);
+    }
+}
+
+function check(num) {
+
+    for(i=0; i<passwordLength; i++) {
+        if (passwordToGuess.charAt(i) == letters[num]) {
+            password1 = password1.setCharacter(i, letters[num]);
+        }
+    }
     writePasswordToGuess();
 }
