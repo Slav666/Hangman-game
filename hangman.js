@@ -1,6 +1,8 @@
 var passwordToGuess = "Actions speak louder than words";
 passwordToGuess = passwordToGuess.toUpperCase();
 
+var numberOfWrongGeuss = 0;
+
 var passwordLength = passwordToGuess.length;
 var password1 = "";
 for (i = 0; i < passwordLength; i++) {
@@ -97,7 +99,17 @@ function check(num) {
             document.getElementById(element).style.color = "#C00000";
             document.getElementById(element).style.border = "3px solid #C00000";
             document.getElementById(element).style.cursor = "default";
+            document.getElementById(element).setAttribute("onclick",";");
+
+            numberOfWrongGeuss++;
+            var image = "img/s" + numberOfWrongGeuss + ".jpg";
+            document.getElementById("gallows").innerHTML = '<img src="'+image+'" alt="" />';
 
         }
-    
+        if (passwordToGuess == password1)
+            document.getElementById("alphabet").innerHTML = "This is the right password!"+password1+'<br/></br><span class="reset" onclick="location.reload()">ONE MORE TIME?</span>';
+
+            if(numberOfWrongGeuss >=9)
+            document.getElementById("alphabet").innerHTML = "TOU LOST! the corect password is: "+password1+'<br/></br><span class="reset" onclick="location.reload()">ONE MORE TIME?</span>';
+            
 }
